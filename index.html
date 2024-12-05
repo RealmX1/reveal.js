@@ -1,40 +1,183 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RL-Based Tradebot - Final Presentation</title>
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/white.css">
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css">
+    <style>
+        .reveal section img {
+            border: none;
+            box-shadow: none;
+        }
+        .reveal pre {
+            width: 100%;
+            font-size: 0.75em;
+        }
+        .reveal .math {
+            font-size: 0.85em;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!-- Title Slide -->
+            <section>
+                <h2>RL Stock Tradebot</h2>
+                <p><small>Group 5</small></p>
+                <p><medium>Bomin Zhang</medium></p>
+            </section>
+						<section>
+							<h3> Why Going with this Fallback Plan?</h3>
+							<img src="js/assets/rl_v_llm.png" alt="fallback" style="width: 80%; height: auto;">
+						</section>
 
-		<title>reveal.js</title>
+            <!-- Introduction -->
+            <section>
+                <section>
+                    <h2>Introduction</h2>
+                    <ul>
+                        <li>Project Overview</li>
+                        <li>Key Objectives</li>
+                        <li>Why Reinforcement Learning?</li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h3>Motivation</h3>
+                    <ul>
+                        <li>Previous experience with RNN-based models</li>
+                        <li>Exploring DQN capabilities in trading</li>
+                        <li><del>Comparative analysis potential</del></li>
+												<li>analyze capability of DQN model in trading</li>
+                    </ul>
+                </section>
+            </section>
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+            <!-- Data Preparation -->
+            <section>
+                <section>
+                    <h2>Data Preparation</h2>
+                    <ul>
+                        <li>Stock Data: Alpaca-trade API</li>
+                        <li>Time Period: 2020-2022 (training), 2023 (testing)</li>
+												<li>Macro-economic Data: FRED</li>
+                        <li>Top 50 volume stocks from S&P500</li>
+                    </ul>
+                </section>
+								<section>
+								    <h3>Stock Data</h3>
+										<img src="js/assets/raw_stock_data.png" alt="stock data" style="width: 80%; height: auto;">
+										<img src="js/assets/alpaca_logo.png" alt="stock data example" style="width: 40%; height: auto;">
+								</section>
+								<section>
+									<h3>Macro-economic Data</h3>
+									<img src="js/assets/fred_data.png" alt="macro data example" style="width: 70%; height: auto;">
+									<!-- <img src="js/assets/fred_logo.png" alt="macro data example" style="width: 20%; height: auto; background-color: black;"> -->
+								</section>
+								<section>
+									
+									<img src="js/assets/raw_macro_data.png" alt="macro data" style="width: 80%; height: auto;">
+									<img src="js/assets/fred_series_selected.png" alt="macro data example" style="width: 100%; height: auto; background-color: black;">
+								</section>
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+                
+            </section>
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+						<section>
+							<section>
+								<h3>Feature Engineering</h3>
+								<ul>
+										<li>Stock Indicators</li>
+										<li>Data Normalization Techniques</li>
+								</ul>
+						</section>
+						</section>
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+            <!-- Model Architecture -->
+            <section>
+                <section>
+                    <h2>DQN Model Architecture</h2>
+                    <ul>
+                        <li>Deep Q-Network Components</li>
+                        <li>Experience Replay</li>
+                        <li>Q Network & Target Q Network</li>
+												<li>a.k.a.Policy Network & Target Network</li>
+												<li>Epsilon-Greedy Strategy</li>
+                    </ul>
+                </section>
+								
+
+                <section>
+                    <h3>Network Structure</h3>
+										<img src="js/assets/DQN.png" alt="dqn model" style="width: 80%; height: auto;">
+
+                </section>
+            </section>
+
+            <!-- Training and Results -->
+            <section>
+                <section>
+                    <h2>Training Process</h2>
+                    <ul>
+                        <li>Custom Backtesting Simulation</li>
+                        <li>Performance Metrics</li>
+                    </ul>
+                </section>
+								<section>
+									<img src="js/assets/training.png" alt="training process" style="width: 120%; height: auto;"></section>
+								</section>
+                <section>
+                    <h3>Results Analysis</h3>
+                    <ul>
+                        <li>Comparison with Background Strategy</li>
+                        <li>Impact of Trading Fees</li>
+                        <li>Model Performance in Test Period</li>
+                    </ul>
+                </section>
+            </section>
+
+            <!-- Conclusion -->
+            <section>
+                <h2>Conclusion & Future Work</h2>
+                <ul>
+                    <li><del>Key Findings</del></li>
+                    <li>Limitations</li>
+                    <li>Future Improvements</li>
+                </ul>
+            </section>
+
+            <!-- Q&A -->
+            <section>
+                <h2>Questions?</h2>
+                <p>Thank you for your attention!</p>
+            </section>
+        </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/math/math.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            slideNumber: true,
+            plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ],
+            controls: true,
+            progress: true,
+            center: true,
+            transition: 'slide',
+            math: {
+                mathjax: 'https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js',
+                config: 'TeX-AMS_HTML-full'
+            }
+        });
+    </script>
+</body>
 </html>
